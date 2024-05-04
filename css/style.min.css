@@ -1,0 +1,328 @@
+.ibg {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.ibg img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  white-space: nowrap;
+  border: none;
+  outline: none;
+  outline-offset: 0;
+}
+
+html {
+  scroll-padding-block-start: var(--header-height);
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #060606;
+}
+.scroll-lock body {
+  overflow: hidden;
+}
+
+/*
+ * Copyright (c) 2024 Javid Gulmaliyev
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+/**
+ * SCSS function responsive-value.
+ * It is intended to handle responsive CSS property values without using media queries
+ *
+ * @access public
+ * @author Javid Gulmaliyev
+ *
+ * @param {number} $start-value - The initial value of the property. Accepts only numeric values without units. Cannot be equal to $end-value.
+ * @param {number} $end-value - The final value of the property. Accepts only numeric values without units. Cannot be equal to $start-value.
+ * @param {number} $start-breakpoint - The initial breakpoint. At this breakpoint, the property value will be equal to $start-value. Accepts only positive numeric values without units. Cannot be less than or equal to $end-breakpoint.
+ * @param {number} $end-breakpoint - The final breakpoint. At this breakpoint, the property value will be equal to $end-value. Accepts only positive numeric values or 0 (zero) without units. Cannot be greater than or equal to $start-breakpoint.
+ * @param {string} $behavior - Accepts 4 values:
+ *   - "not-fixed": The $start-value and $end-value properties are not fixed before and after breakpoints.
+ *   - "fixed-both": The $start-value and $end-value properties are strictly fixed before and after breakpoints.
+ *   - "fixed-start-value": At this value, $start-value is strictly fixed before $start-breakpoint. Default value.
+ *   - "fixed-end-value": At this value, $end-value is strictly fixed after $end-breakpoint.
+ * @param {string} $unit - CSS unit for numeric values. Default is "px". When changing the unit, $start-value, $end-value, $start-breakpoint, and $end-breakpoint should be written in the format of the specified unit.
+ *
+ * @return {string} One of the CSS mathematical functions: min(), max(), clamp().
+ *
+ * @example
+ * .element {
+ *     font-size: responsive-value(2, 1, 48, 23.4375, "fixed-both", "rem");
+ *     padding: responsive-value(20, 10, 768, 375, "fixed-end-value", "px");
+ *     margin-bottom: responsive-value(30, 15, 1440, 280);
+ * }
+ *
+ * @throw {error} If $start-value, $end-value, $start-breakpoint, or $end-breakpoint are not numeric or have units.
+ * @throw {error} If $start-value and $end-value are equal.
+ * @throw {error} If $start-breakpoint is less than or equal to zero.
+ * @throw {error} If $end-breakpoint is a negative number.
+ * @throw {error} If $start-breakpoint is less than $end-breakpoint.
+ * @throw {error} If $start-breakpoint is equal to $end-breakpoint.
+ * @throw {error} If the value of $behavior is incorrect.
+ */
+.container {
+  max-inline-size: 1920px;
+  margin-inline: auto;
+  padding-inline: 4.2666666667vw;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100%;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.find {
+  padding-block: 6.4vw 9.3333333333vw;
+}
+.find__button {
+  margin-block-end: 6.4vw;
+}
+.filter-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 3.7333333333vw;
+  inline-size: fit-content;
+  min-block-size: 6.4vw;
+  margin-inline: auto;
+  padding-block: 1.0666666667vw;
+  padding-inline: 4.2666666667vw;
+  font-weight: 500;
+  font-size: 3.2vw;
+  line-height: 1.1;
+  color: #8059ee;
+  background: #fff;
+  box-shadow: 1px 1px 5px 0 rgba(117, 101, 125, 0.15);
+  border-radius: 8vw;
+}
+.filter-button__icon {
+  flex: 0 0 auto;
+  font-size: 0;
+}
+.filter-button__icon svg {
+  width: 4.2666666667vw;
+  height: 4.2666666667vw;
+}
+
+.find-list__item:not(:last-child) {
+  margin-block-end: 2.1333333333vw;
+}
+
+.find-card {
+  block-size: 100%;
+}
+.find-card__top {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 343/358;
+  border-start-start-radius: 5.3333333333vw;
+  border-start-end-radius: 5.3333333333vw;
+  overflow: hidden;
+}
+.find-card__top::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 72%);
+}
+.find-card__buttons {
+  position: absolute;
+  inset-block-start: 2.6666666667vw;
+  inset-inline: 4.2666666667vw 2.6666666667vw;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+}
+.find-card__remove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  inline-size: 11.2vw;
+  aspect-ratio: 1/1;
+  font-size: 0;
+  color: #8059ee;
+  background-color: #fff;
+  box-shadow: 1px 1px 5px 0 rgba(117, 101, 125, 0.15);
+  border-radius: 50%;
+}
+.find-card__remove svg {
+  width: 4.2666666667vw;
+  height: 4.2666666667vw;
+}
+.find-card__image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.find-card__content {
+  position: relative;
+  margin-block-start: -4.2666666667vw;
+  padding-block: 2.6666666667vw 4.2666666667vw;
+  padding-inline: 4.2666666667vw 2.6666666667vw;
+  background-color: #fff;
+  border: 0.1333333333vw solid rgba(117, 101, 125, 0.2);
+  border-radius: 5.3333333333vw;
+}
+.find-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+  margin-block-end: 4.2666666667vw;
+}
+.find-card__name {
+  font-weight: 500;
+  font-size: 4.2666666667vw;
+}
+.find-card__target {
+  margin-block-start: 1.6vw;
+  font-size: 3.2vw;
+  line-height: 1.1;
+  color: #8059ee;
+}
+.find-card__like {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 11.2vw;
+  aspect-ratio: 1/1;
+  flex: 0 0 auto;
+  font-size: 0;
+  color: #8059ee;
+  border: 0.2666666667vw solid;
+  border-radius: 50%;
+}
+.find-card__like svg {
+  width: 4.5333333333vw;
+  height: 4.5333333333vw;
+}
+.find-card__compatilibity {
+  margin-block-end: 4.2666666667vw;
+}
+.find-location {
+  display: flex;
+  align-items: center;
+  column-gap: 1.6vw;
+  min-block-size: 6.4vw;
+  padding-block: 1.0666666667vw;
+  padding-inline: 4.2666666667vw;
+  font-size: 3.2vw;
+  line-height: 1.1;
+  color: #fff;
+  border: 0.1333333333vw solid;
+  border-radius: 5.3333333333vw;
+}
+.find-location__icon {
+  flex: 0 0 auto;
+  font-size: 0;
+}
+.find-location__icon svg {
+  width: 3.2vw;
+  height: 4.2666666667vw;
+}
+.find-compatilibity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 5.6vw;
+}
+.find-compatilibity__progress {
+  position: relative;
+  flex: 0 0 auto;
+  inline-size: 47.7333333333vw;
+  aspect-ratio: 179/10;
+  background: #f9f9f9;
+  border-radius: 2.6666666667vw;
+  overflow: hidden;
+}
+.find-compatilibity__progress::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: var(--progress);
+  block-size: 100%;
+  background: #ace39c;
+  border-radius: inherit;
+}
+.find-compatilibity__text {
+  font-weight: 500;
+  font-size: 3.2vw;
+  line-height: 1.1;
+  text-align: end;
+}
+
+.find-links__block:not(:last-child) {
+  margin-block-end: 3.2vw;
+}
+.find-links__title {
+  margin-block-end: 1.6vw;
+  font-weight: 600;
+  font-size: 3.2vw;
+  line-height: 1.2;
+}
+.find-links__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.0666666667vw;
+}
+.find-links__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-block-size: 5.6vw;
+  padding-block: 1.3333333333vw;
+  padding-inline: 2.6666666667vw;
+  font-weight: 500;
+  font-size: 2.6666666667vw;
+  line-height: 1.1;
+  border: 0.2666666667vw solid rgba(117, 101, 125, 0.2);
+  border-radius: 5.3333333333vw;
+}
