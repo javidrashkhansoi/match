@@ -203,6 +203,11 @@ svg {
   stroke: currentColor;
 }
 
+mark {
+  color: inherit;
+  background: none;
+}
+
 @media (hover: hover) {
   button:hover {
     outline: none;
