@@ -103,10 +103,6 @@ body {
   overflow: hidden;
 }
 
-.container {
-  padding-inline: 4.2666666667vw;
-}
-
 .wrapper {
   position: relative;
   display: flex;
@@ -115,8 +111,60 @@ body {
   overflow: hidden;
 }
 
+.header {
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline: 0;
+  z-index: 50;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 0 0 rgba(117, 101, 125, 0.3);
+  border-block-start: 0.1333333333vw solid #d2cdd4;
+}
+
+.header-nav__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 1.3333333333vw;
+}
+
+.header-nav__item {
+  padding: 4vw;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.0666666667vw;
+  font-size: 2.9333333333vw;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.nav-link__icon {
+  flex: 0 0 auto;
+  inline-size: 6.4vw;
+  aspect-ratio: 1/1;
+  font-size: 0;
+}
+
+.nav-link__icon img {
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
 .main {
   flex: 1 1 auto;
+}
+
+body:has(.header) .main {
+  padding-block-end: var(--header-height, 19.2vw);
+}
+
+.container {
+  padding-inline: 4.2666666667vw;
 }
 
 .find {
